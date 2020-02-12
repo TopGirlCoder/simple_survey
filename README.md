@@ -1,24 +1,15 @@
-# README
+# Simple Survey
+* Simple Survey is an application that has questions and yes or no responses
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project Summary
+* Technologies: rails 6.0.2.1, Ruby 2.7.0
 
-Things you may want to cover:
+## Getting Started
+Install dependencies: 
 
-* Ruby version
+```
+$ bundle install
+``` 
 
-* System dependencies
+## Running Test Suite 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
