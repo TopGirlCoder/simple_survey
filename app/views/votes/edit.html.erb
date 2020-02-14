@@ -1,6 +1,21 @@
-<h1>Editing Vote</h1>
+<div class="sub-nav">
+  <div class="sub-nav">
+	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <%= link_to 'Votes', survey_votes_path(@survey) %> > Vote
+</div>
+</div>
 
-<%= render 'form', vote: @vote %>
+<div>
+  <h1>Editing Vote</h1>
+</div> 
 
-<%= link_to 'Show', @vote %> |
-<%= link_to 'Back', votes_path %>
+<div>
+	<p><%=@survey.question %></p>
+</div>
+
+<div class="button-bottom">
+  <%= render 'form', vote: @vote %>
+</div>  
+
+<div class="clear-links survey-question">
+  <%= link_to 'Show Vote', [@survey, @vote] %> | <%= link_to 'Delete Vote', [@survey, @vote], method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

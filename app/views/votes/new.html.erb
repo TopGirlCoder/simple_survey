@@ -1,5 +1,16 @@
-<h1>New Vote</h1>
+<div class="sub-nav">
+	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <%= link_to 'Votes', survey_votes_path(@survey) %> > Vote
+</div>
 
-<%= render 'form', vote: @vote %>
+<div>
+	<h1>Vote</h1>
+</div>	
 
-<%= link_to 'Back', votes_path %>
+<div>
+  <h4>Please provide a response to the survey question below.</h4> 
+  <p><%= @survey.question %></p>
+</div>
+
+<div>
+	<%= render 'form', vote: @vote %>
+</div>
