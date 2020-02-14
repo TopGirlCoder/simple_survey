@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :question %>
-    <%= form.text_area :question %>
+    <%= form.text_area :question, size: "60x5" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions button-bottom">
+    <%= form.submit 'Submit', class: "survey-button button-left" %>
   </div>
 <% end %>
