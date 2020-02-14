@@ -1,29 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Votes</h1>
+<div class="sub-nav">
+  <%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > Votes > <%= link_to 'Vote', new_survey_vote_path(@survey) %>
+</div>  
 
-<table>
-  <thead>
-    <tr>
-      <th>Value</th>
-      <th>Survey</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div>
+  <h1>Votes</h1>
+</div>
 
-  <tbody>
-    <% @votes.each do |vote| %>
-      <tr>
-        <td><%= vote.value %></td>
-        <td><%= vote.survey_id %></td>
-        <td><%= link_to 'Show', vote %></td>
-        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
-        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div>
+  <p class="survey-item">Here you can explore voting statistics and details about the survey.</p>
+</div>  
 
-<br>
+<div class="survey-item">
+  <h4>Survey Question</h4> 
+  <p><%= @survey.question %></p>
+</div>
+      
+<div class="survey-item">
+  <h4>Voting Statistics</h4> 
+  <p><%= render(partial: "statistics/show", locals: { survey: @survey}) %></p>
+</div>   
 
-<%= link_to 'New Vote', new_vote_path %>
+<div>
+  <h4>Voting Details</h4>
+  <% if @votes.present? %>
+    <table>
+      <thead>
+        <tr>  
+          <th>Vote</th>
+          <th>Timestamp</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @votes.each do |vote| %>
+          <tr>
+            <td><%= vote.get_value %></td>
+            <td><%= vote.updated_at %></td>
+            <td><%= link_to 'Edit', edit_survey_vote_path(@survey, vote) %> | <%= link_to 'Delete', [@survey, vote], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Sorry, this survey does not have voting details.</p>
+  <% end %> 
+</div> 
+
+
+

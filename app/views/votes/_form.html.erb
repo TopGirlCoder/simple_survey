@@ -1,4 +1,4 @@
-<%= form_with(model: vote, local: true) do |form| %>
+<%= form_with(model: [@survey, vote], local: true) do |form| %>
   <% if vote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :value %>
-    <%= form.number_field :value %>
-  </div>
-
-  <div class="field">
-    <%= form.label :survey_id %>
-    <%= form.text_field :survey_id %>
+    <%= form.radio_button :value, 1 %>
+    <%= form.label :value, "Yes", value: "Yes" %>
+    
+    <%= form.radio_button :value, 0 %>
+    <%= form.label :value, "No", value: "No" %><br>  
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "survey-button button-left" %>
   </div>
 <% end %>

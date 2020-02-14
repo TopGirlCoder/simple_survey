@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Value:</strong>
-  <%= @vote.value %>
-</p>
+<div class="sub-nav">
+	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <%= link_to 'Votes', survey_votes_path(@survey) %> > Vote
+</div>
 
-<p>
-  <strong>Survey:</strong>
-  <%= @vote.survey_id %>
-</p>
+<div>
+  <h4>Survey:</h4>
+  <p><%= @vote.survey.question %></p>
+</div>
 
-<%= link_to 'Edit', edit_vote_path(@vote) %> |
-<%= link_to 'Back', votes_path %>
+<div>
+  <h4>Value:</h4>
+  <p><%= @vote.get_value %></p>
+</div>
+
+<div>
+<%= link_to 'Edit Vote', edit_survey_vote_path(@survey, @vote) %> | <%= link_to 'Delete Vote', [@vote.survey, @vote], method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
