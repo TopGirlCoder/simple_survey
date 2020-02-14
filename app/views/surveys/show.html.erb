@@ -1,9 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @survey.question %>
-</p>
+<div class="sub-nav">
+  <%= link_to 'Surveys', surveys_path %> > Survey > <%= link_to 'Votes', survey_votes_path(@survey) %>
+</div>
 
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', surveys_path %>
+<div>
+  <h1>Survey</h1>
+</div>  
+
+<div class="survey-item">
+  <h4>Survey Question</h4> 
+  <p><%= @survey.question %></p>
+</div>  
+
+<div class="survey-item">
+  <h4>Survey Statistics</h4>
+  <p><%= render(partial: "statistics/show", locals: { survey: @survey}) %></p>
+</div>  
+
+<div>
+   <%= link_to 'Edit Survey', edit_survey_path(@survey) %> | <%= link_to 'Delete Survey', @survey, method: :delete, data: { confirm: 'Are you sure?' } %> 
+</div>

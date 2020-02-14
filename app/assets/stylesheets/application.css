@@ -13,3 +13,122 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.survey-button:link, a.survey-button:visited {
+  text-decoration: none;
+  color: #c9e7ff;
+}
+
+a.survey-button:hover, a.survey-button:active {
+  text-decoration: none;
+  background-color: #0086f0;
+  color: #fff;
+}
+
+input[type="radio"], label{
+  float: left; 
+  margin-bottom: 10px; 
+}
+input{
+    clear: left;
+}
+
+/* nav */
+nav {
+  width: 100%;
+  background: #464646;
+  margin-bottom: 15px;
+  padding: 5px 0px 5px 0px;
+}
+.global-nav {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3px;
+  text-align: left;
+  position: relative;
+}
+#logo {
+  font-size: 13px;
+  font-weight: 1000;
+  color: #e3e3e3;
+}
+
+a#logo:hover, a#logo:active {
+  text-decoration: none;
+  background-color: transparent;
+  color: #fff;
+}
+
+.sub-nav {
+  padding-bottom: 30px;
+}
+
+.survey-button {
+  padding: 5px 15px 5px 15px;
+  background: #0070c9;
+  border: 1px solid #07c;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #c9e7ff;
+  margin-top: 13px;
+}
+
+.button-left {
+  float: left;
+}
+
+.button-right {
+  float:right;
+}
+
+.button-bottom {
+  padding-bottom: 33px;
+}
+
+.clear-links {
+  clear: left;
+}
+
+tr {
+  text-align: left;
+}
+.survey-borders {
+  border-top: .5px solid #b7c4cd;
+  margin-top: 15px;
+}
+
+h1 {
+  padding-bottom: 21px;
+}
+
+.survey-question {
+  padding-top: 17px;
+}
+
+.survey-mini-question {
+  padding-top: 9px;
+}
+
+.survey-item {
+  padding-bottom: 17px;
+}
+
+.statistics {
+  padding: 0px 0px 7px;
+}
+
+.statistics-expanded {
+  padding: 0px 10px 7px;
+}
