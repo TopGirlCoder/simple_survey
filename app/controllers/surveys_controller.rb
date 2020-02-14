@@ -2,10 +2,11 @@ class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   def index
-    @surveys = Survey.all
+    @surveys = Survey.all.order(created_at: :desc)
   end
 
   def show
+    @vote = @survey.votes.new 
   end
 
   def new
@@ -20,7 +21,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
+        format.html { redirect_to @survey, notice: 'Survey was successfully created. Please find the details below.' }
         format.json { render :show, status: :created, location: @survey }
       else
         format.html { render :new }
@@ -32,7 +33,7 @@ class SurveysController < ApplicationController
   def update
     respond_to do |format|
       if @survey.update(survey_params)
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+        format.html { redirect_to @survey, notice: 'Survey was successfully updated. Please find the details below' }
         format.json { render :show, status: :ok, location: @survey }
       else
         format.html { render :edit }
@@ -44,7 +45,7 @@ class SurveysController < ApplicationController
   def destroy
     @survey.destroy
     respond_to do |format|
-      format.html { redirect_to surveys_url, notice: 'Survey was successfully destroyed.' }
+      format.html { redirect_to surveys_url, notice: 'Survey was successfully deleted.' }
       format.json { head :no_content }
     end
   end

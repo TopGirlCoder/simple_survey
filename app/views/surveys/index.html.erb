@@ -1,27 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Surveys</h1>
+   
 
-<table>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="survey-item survey-mini-question">
+  <p><b>Welcome!</b> Have fun creating a new survey or participating in a survey.</p>
+</div>
 
-  <tbody>
-    <% @surveys.each do |survey| %>
+<div>  
+  <h1>All Surveys<span><%= link_to 'New Survey', new_survey_path, class: "survey-button button-right" %></span></h1> 
+</div> 
+
+<div>
+  <% @surveys.each do |survey| %>
+
+    <div class="survey-borders survey-question">
+      
+    <table class="survey-question">
       <tr>
-        <td><%= survey.question %></td>
-        <td><%= link_to 'Show', survey %></td>
-        <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
-        <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= survey.question %></th>  
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr><td></td></tr>
+      <tr>
+        <td><%= link_to 'Vote', new_survey_vote_path(survey), class: "survey-button button-left" %></td>   
+      </tr>       
+    </table>  
+    <%= render(partial: "statistics/show", locals: { survey: survey}) %>
 
-<br>
+    <div>
+      <%= link_to 'Votes', survey_votes_path(survey) %> | <%= link_to 'Edit Survey', edit_survey_path(survey) %> | <%= link_to 'Delete Survey', survey, method: :delete, data: { confirm: 'Are you sure?' } %> 
+    </div>
 
-<%= link_to 'New Survey', new_survey_path %>
+  </div>
+  <% end %>
+</div>
+
+
