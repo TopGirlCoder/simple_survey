@@ -1,15 +1,15 @@
 <div class="sub-nav">
-  <%= link_to 'Surveys', surveys_path %> > Survey
+  <%= link_to 'Surveys', surveys_path %> > <b>Survey</b>
 </div>
 
 <div>
   <h1>Editing Survey</h1>
 </div> 
 
-<div>
+<div class="survey-item">
   <%= render 'form', survey: @survey %>
 </div>  
 
 <div>
-  <%= link_to 'Show Survey', @survey %> | <%= link_to 'Delete Survey', @survey, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back', surveys_path %> | <%= link_to 'Show', @survey %> | <%= link_to 'Delete', @survey, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

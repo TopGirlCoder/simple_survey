@@ -1,5 +1,5 @@
 <div class="sub-nav">
-	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <%= link_to 'Votes', survey_votes_path(@survey) %> > Vote
+	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <b>Vote</b>
 </div>
 
 <div>
@@ -14,3 +14,5 @@
 <div>
 	<%= render 'form', vote: @vote %>
 </div>
+
+

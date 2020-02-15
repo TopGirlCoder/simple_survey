@@ -1,6 +1,6 @@
 <div class="sub-nav">
   <div class="sub-nav">
-	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <%= link_to 'Votes', survey_votes_path(@survey) %> > Vote
+	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <b>Vote</b>
 </div>
 </div>
 
@@ -17,5 +17,5 @@
 </div>  
 
 <div class="clear-links survey-question">
-  <%= link_to 'Show Vote', [@survey, @vote] %> | <%= link_to 'Delete Vote', [@survey, @vote], method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back', surveys_path %> | <%= link_to 'Show', [@survey, @vote] %> | <%= link_to 'Delete', [@survey, @vote], method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

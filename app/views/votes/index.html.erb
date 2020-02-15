@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="sub-nav">
-  <%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > Votes > <%= link_to 'Vote', new_survey_vote_path(@survey) %>
+  <%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <b>Votes</b>
 </div>  
 
 <div>
@@ -9,23 +9,15 @@
 </div>
 
 <div>
-  <p class="survey-item">Here you can explore voting statistics and details about the survey.</p>
+  <p class="survey-item">Please see below for voting statistics and details.</p>
 </div>  
 
 <div class="survey-item">
-  <h4>Survey Question</h4> 
-  <p><%= @survey.question %></p>
-</div>
-      
-<div class="survey-item">
-  <h4>Voting Statistics</h4> 
-  <p><%= render(partial: "statistics/show", locals: { survey: @survey}) %></p>
-</div>   
-
-<div>
-  <h4>Voting Details</h4>
+  <p><b>Survey question:</b> <%= @survey.question %></p>
+  <p><b>Voting statistics:</b> Yes <%=@survey.percent_yes %>% | No <%=@survey.percent_no %>%</p>
   <% if @votes.present? %>
-    <table>
+    <p><b>Voting details:</b></p>
+    <table id="votes">
       <thead>
         <tr>  
           <th>Vote</th>
@@ -38,15 +30,19 @@
           <tr>
             <td><%= vote.get_value %></td>
             <td><%= vote.updated_at %></td>
-            <td><%= link_to 'Edit', edit_survey_vote_path(@survey, vote) %> | <%= link_to 'Delete', [@survey, vote], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', [@survey, @vote] %> | <%= link_to 'Edit', edit_survey_vote_path(@survey, vote) %> | <%= link_to 'Delete', [@survey, vote], method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   <% else %>
-    <p>Sorry, this survey does not have voting details.</p>
+    <p><b>Voting details:</b> Sorry, this survey does not have voting details.</p>
   <% end %> 
 </div> 
+
+<div>
+   <%= link_to 'Back', [@survey] %> 
+</div>
 
 
 

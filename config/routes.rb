@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   	resources :votes
   end	
 
-  match '*path', via: :all, to: redirect('/404')
+  get ":url" => "application#redirect_user", constraints: { url: /.*/ }
   
 end

@@ -21,10 +21,11 @@ class VotesController < ApplicationController
 
     respond_to do |format| 
       if @vote.save
-        add_to_voted(@vote.survey_id)
-        format.html { redirect_to survey_votes_path(@survey), notice: 'Vote was successfully saved. Please find the details below.' }
+        # format.html { redirect_to survey_vote_path(@survey, @vote), notice: 'Vote was successfully saved. Please find details below.' }
+        format.html { redirect_to survey_vote_path(@survey, @vote), notice: 'Vote was successfully saved.' }
       else
         format.html { render :new }
+        format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -32,9 +33,10 @@ class VotesController < ApplicationController
   def update
     respond_to do |format|
       if @vote.update(vote_params)
-        format.html { redirect_to survey_vote_path(@survey), notice: 'Vote was successfully updated. Please find the details below.' }
+        format.html { redirect_to survey_vote_path(@survey), notice: 'Vote was successfully updated.' }
       else
         format.html { render :edit }
+        format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,7 +44,7 @@ class VotesController < ApplicationController
   def destroy
     @vote.destroy
     respond_to do |format|
-      format.html { redirect_to survey_votes_path(@survey), notice: 'Vote was successfully deleted.' }
+      format.html { redirect_to surveys_url, notice: 'Vote was successfully deleted.' }
     end
   end
 

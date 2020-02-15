@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.radio_button :value, 1 %>
+    <%= form.radio_button :value, 1, required: 'required' %>
     <%= form.label :value, "Yes", value: "Yes" %>
     
     <%= form.radio_button :value, 0 %>
