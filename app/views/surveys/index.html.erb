@@ -1,35 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<div class="survey-mini-question">  
+<div class="survey-question">  
   <h1>Surveys<span><%= link_to 'New Survey', new_survey_path, class: "survey-button button-right" %></span></h1> 
 </div> 
 
 <div>
-  <% @surveys.each do |survey| %>
-
-    <div class="survey-borders survey-question"> 
-      <table class="survey-question">
-        <tr>
-          <th><%= survey.question %></th>  
+  <% if @surveys.present? %>
+   <table id="votes">
+      <thead>
+        <tr>  
+          <th>Survey</th>
+          <th>Statistics</th>
+          <th>Actions</th>
         </tr>
-        <tr><td></td></tr>
-        <tr>
-          <td><%= link_to 'Vote', new_survey_vote_path(survey), class: "survey-button button-left" %></td>   
-        </tr> 
-        <tr>
-          <td>
-          <%= render(partial: "statistics/show", locals: { survey: survey}) %>
-          </td>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-          <td><%= link_to 'Show', survey %> | <%= link_to 'Edit', edit_survey_path(survey) %> | <%= link_to 'Delete', survey, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-        </tr>      
-      </table>
-    </div>
-
-  <% end %>
+      </thead>
+      <tbody>
+        <% @surveys.each do |survey| %>
+          <tr>
+            <td><%= survey.question %></td>
+            <td>Yes <%=survey.percent_yes %>% | No <%=survey.percent_no %>%</td>
+            <td><%= link_to 'Vote', new_survey_vote_path(survey) %> | <%= link_to 'Show', survey %> | <%= link_to 'Edit', edit_survey_path(survey) %> | <%= link_to 'Delete', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table> 
+  <% else %>
+    <p>Get started by creating your first survey!</p>
+  <% end %>   
 </div>
 
-
+ 
