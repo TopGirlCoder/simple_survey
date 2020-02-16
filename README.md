@@ -5,7 +5,7 @@
 * Technologies: rails 6.0.2.1, Ruby 2.7.0, Devise
 
 ## Getting Started
-Install dependencies: 
+* Install dependencies: 
 
 ```
 $ bundle install
@@ -15,7 +15,6 @@ $ bundle install
 * rails test
 
 ## Running seed file
-
 
 ## Setting up the database
 * rails db:create
