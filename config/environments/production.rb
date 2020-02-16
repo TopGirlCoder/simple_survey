@@ -60,6 +60,9 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "simple_survey_production"
 
+  # Devise in prod :host should be set to the actual host of the application
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

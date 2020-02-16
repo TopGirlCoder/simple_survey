@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= form.hidden_field :survey_id, value: params[:survey_id] %>
+  </div>  
+
+  <div class="field">
     <%= form.radio_button :value, 1, required: 'required' %>
     <%= form.label :value, "Yes", value: "Yes" %>
     
@@ -23,3 +27,5 @@
     <%= form.submit "Submit", class: "survey-button button-left" %>
   </div>
 <% end %>
+
+

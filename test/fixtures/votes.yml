@@ -3,7 +3,9 @@
 one:
   value: 1
   survey: one
+  voter: two
 
 two:
   value: 1
   survey: two
+  voter: one

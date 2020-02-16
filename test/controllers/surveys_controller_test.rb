@@ -2,7 +2,10 @@ require 'test_helper'
 
 class SurveysControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @survey = surveys(:one)
+    get '/users/sign_in'
+    sign_in users(:two)
+    post user_session_url
+    @survey = surveys(:two)
   end
 
   test "should get index" do
@@ -17,7 +20,7 @@ class SurveysControllerTest < ActionDispatch::IntegrationTest
 
   test "should create survey" do
     assert_difference('Survey.count') do
-      post surveys_url, params: { survey: { question: @survey.question } }
+      post surveys_url, params: { survey: { question: "hello", surveyor_id: @survey.surveyor_id } }
     end
 
     assert_redirected_to survey_url(Survey.last)
@@ -34,7 +37,7 @@ class SurveysControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update survey" do
-    patch survey_url(@survey), params: { survey: { question: @survey.question } }
+    patch survey_url(@survey), params: { survey: { question: "goodbye", surveyor: @survey.surveyor_id } }
     assert_redirected_to survey_url(@survey)
   end
 

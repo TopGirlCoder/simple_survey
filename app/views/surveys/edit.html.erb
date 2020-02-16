@@ -1,15 +1,17 @@
-<div class="sub-nav">
-  <%= link_to 'Surveys', surveys_path %> > <b>Survey</b>
-</div>
-
 <div>
   <h1>Editing Survey</h1>
 </div> 
 
-<div class="survey-item">
-  <%= render 'form', survey: @survey %>
-</div>  
-
-<div>
-  <%= link_to 'Back', surveys_path %> | <%= link_to 'Show', @survey %> | <%= link_to 'Delete', @survey, method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
+<% if user_signed_in? && (current_user.id == @survey.surveyor_id) %>
+	<div class="survey-item">
+	  <%= render 'form', survey: @survey %>
+	</div>  
+	<div>
+	  <%= link_to 'Back', surveys_path %> | <%= link_to 'Delete', @survey, method: :delete, data: { confirm: 'Are you sure?' } %>
+	</div>
+<% else %>
+  <p>Sorry...you do not have permission to view this page.</p>  
+	<div class="clear-links survey-question">
+		<%= link_to 'Back', surveys_path %>
+	</div>
+<% end %>

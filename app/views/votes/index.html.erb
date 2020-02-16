@@ -1,48 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<div class="sub-nav">
-  <%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <b>Votes</b>
-</div>  
-
 <div>
   <h1>Votes</h1>
 </div>
 
-<div>
-  <p class="survey-item">Please see below for voting statistics and details.</p>
-</div>  
-
-<div class="survey-item">
-  <p><b>Survey question:</b> <%= @survey.question %></p>
-  <p><b>Voting statistics:</b> Yes <%=@survey.percent_yes %>% | No <%=@survey.percent_no %>%</p>
-  <% if @votes.present? %>
-    <p><b>Voting details:</b></p>
-    <table id="votes">
-      <thead>
-        <tr>  
-          <th>Vote</th>
-          <th>Timestamp</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @votes.each do |vote| %>
-          <tr>
-            <td><%= vote.get_value %></td>
-            <td><%= vote.updated_at %></td>
-            <td><%= link_to 'Show', [@survey, @vote] %> | <%= link_to 'Edit', edit_survey_vote_path(@survey, vote) %> | <%= link_to 'Delete', [@survey, vote], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% if user_signed_in? && (current_user.id == @survey.surveyor_id) %>
+  <div>
+    <p class="survey-item">Please see below for voting statistics and details.</p>
+  </div>  
+  <div class="survey-item">
+    <p><b>Survey question:</b> <%= @survey.question %></p>
+    <p><b>Voting statistics:</b> Yes <%=@survey.percent_yes %>% | No <%=@survey.percent_no %>%</p>
+    
+    <% if @votes.present? %>
+      <p><b>Voting details:</b></p>
+      <table id="votes">
+        <thead>
+          <tr>  
+            <th>Vote</th>
+            <th>Email</th>
+            <th>Timestamp</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p><b>Voting details:</b> Sorry, this survey does not have voting details.</p>
-  <% end %> 
-</div> 
+        </thead>
+        <tbody>
+          <% @votes.each do |vote| %>
+            <tr>
+              <td><%= vote.get_value %></td>
+              <td><%= vote.voter_email %></td>
+              <td><%= vote.updated_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p><b>Voting details:</b> Sorry, this survey does not have voting details.</p>
+    <% end %> 
+    
+  </div> 
+<% else %>
+  <p>Sorry...you do not have permission to view this page.</p>  
+<% end %>
 
 <div>
-   <%= link_to 'Back', [@survey] %> 
+   <%= link_to 'Back', surveys_path %>  
 </div>
-
-
 

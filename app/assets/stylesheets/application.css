@@ -46,28 +46,51 @@ input{
 /* nav */
 nav {
   width: 100%;
-  background: #464646;
-  margin-bottom: 15px;
+  background: #c0c0c0;
+  margin-bottom: 25px;
   padding: 5px 0px 5px 0px;
 }
+
 .global-nav {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 5px 3px 5px 3px;
-  text-align: left;
-  position: relative;
+  padding: 5px 3px 3px 3px;
+  color: #fff;
 }
-#logo {
-  font-size: 13px;
-  font-weight: 1000;
-  color: #e3e3e3;
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear-both {
+  clear: both;
+}
+
+a#logo {
+  color: #fff;
 }
 
 a#logo:hover, a#logo:active {
   text-decoration: none;
   background-color: transparent;
+  color: #e1e1e1;
+}
+
+a.nav-link {
+  font-size: 13px;
+  font-weight: 1000;
   color: #fff;
+}
+
+a.nav-link:hover, a.nav-link:active {
+  text-decoration: none;
+  background-color: transparent;
+  color: #e1e1e1;
 }
 
 .sub-nav {
@@ -113,8 +136,13 @@ h1 {
   padding-bottom: 21px;
 }
 
-.survey-question {
+.page-header {
   padding-top: 45px;
+}
+
+.survey-question {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .survey-mini-question {
@@ -122,7 +150,7 @@ h1 {
 }
 
 .survey-item {
-  padding-bottom: 17px;
+  padding-bottom: 10px;
 }
 
 .statistics {

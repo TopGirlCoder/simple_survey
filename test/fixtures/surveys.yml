@@ -2,6 +2,8 @@
 
 one:
   question: MyText
+  surveyor: one
 
 two:
   question: MyText
+  surveyor: two

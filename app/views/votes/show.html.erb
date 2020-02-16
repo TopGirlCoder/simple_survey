@@ -1,19 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<div class="sub-nav">
-	<%= link_to 'Surveys', surveys_path %> > <%= link_to 'Survey', [@survey] %> > <b>Vote</b>
-</div>
-
 <div>
   <h1>Vote</h1>
 </div> 
 
-<div class="survey-item">
-  <p><b>Survey question:</b> <%= @vote.survey.question %></p>
-  <p><b>Response:</b> <%= @vote.get_value %></p>
-</div>
-
-
-<div>
-<%= link_to 'Back', surveys_path %> | <%= link_to 'Edit', edit_survey_vote_path(@survey, @vote) %> | <%= link_to 'Delete', [@vote.survey, @vote], method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
+<% if user_signed_in? && (current_user.id == @vote.voter_id) %>
+	<div class="survey-item">
+	  <p><b>Survey question:</b> <%= @vote.survey.question %></p>
+	  <p><b>Response:</b> <%= @vote.get_value %></p>
+	</div>
+	<div>
+	<%= link_to 'Back', surveys_path %> | <%= link_to 'Edit', edit_survey_vote_path(@survey, @vote) %> | <%= link_to 'Delete', [@vote.survey, @vote], method: :delete, data: { confirm: 'Are you sure?' } %>
+	</div>
+<% else %>
+  <p>Sorry...you do not have permission to view this page.</p>  
+	<div class="clear-links survey-question">
+		<%= link_to 'Back', surveys_path %>
+	</div>
+<% end %>

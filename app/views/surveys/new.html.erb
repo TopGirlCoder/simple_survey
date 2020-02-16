@@ -1,7 +1,3 @@
-<div class="sub-nav">
-  <%= link_to 'Surveys', surveys_path %> > <b>Survey</b>
-</div>
-
 <div>
 	<h1>Survey</h1>
 </div>      
@@ -13,3 +9,7 @@
 <div>
   <%= render 'form', survey: @survey %>
 </div>  
+
+<div class="clear-links"><br>
+	<%= link_to 'Back', surveys_path %>
+</div>

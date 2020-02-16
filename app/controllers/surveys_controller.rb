@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:index]
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,14 +11,14 @@ class SurveysController < ApplicationController
   end
 
   def new
-    @survey = Survey.new
+    @survey = current_user.surveys.build
   end
 
   def edit
   end
 
   def create
-    @survey = Survey.new(survey_params)
+    @survey = current_user.surveys.new(survey_params)
 
     respond_to do |format|
       if @survey.save

@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_survey
   before_action :set_vote, only: [:show, :edit, :update, :destroy]
 
@@ -10,14 +11,14 @@ class VotesController < ApplicationController
   end
 
   def new
-    @vote = @survey.votes.build
+    @vote = current_user.votes.build
   end
 
   def edit
   end
 
   def create
-    @vote = @survey.votes.new(vote_params)
+    @vote = current_user.votes.new(vote_params)
 
     respond_to do |format| 
       if @vote.save
@@ -54,7 +55,7 @@ class VotesController < ApplicationController
     end 
 
     def set_vote
-      @vote = @survey.votes.find(params[:id])
+      @vote = current_user.votes.find(params[:id])
     end
 
     def vote_params
